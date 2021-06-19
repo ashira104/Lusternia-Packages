@@ -6,6 +6,9 @@ Below is a list of packages, what they do, and if they have an aliases help pop-
  - Bix Echoes
    ~ Install only, no activation needed.
    ~ Will echo the exits on all orgbixes, torus, cubix, and prism
+ - Continuum Polyhedron Feeder
+   ~ COHELP for a pop-up with commands.
+   ~ Will assist with feeding crystals to the polyhedrons on Continuum.
  - Essence Change
    ~ Install only, no activation needed.
    ~ Will show essence gain/loss
@@ -15,6 +18,9 @@ Below is a list of packages, what they do, and if they have an aliases help pop-
  - Gaudiguch Epic Quest
    ~ EMHELP for a pop-up with commands.
    ~ Will help with various portions of the Gaudiguch Epic Quest as detailed in the pop-ups.
+ - Hallifax Primary Generator
+   ~ GENHELP for a pop-up with commands.
+   ~ Will assist in producing appropriate sphere colours for the Primary Generator.
  - Magnagora Epic Quest
    ~ SAHELP for a pop-up with commands.
    ~ Will help with various portions of the Magnagora Epic Quest as detailed in the pop-ups.
