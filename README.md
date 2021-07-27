@@ -18,6 +18,9 @@ Below is a list of packages, what they do, and if they have an aliases help pop-
  - Gaudiguch Epic Quest
    ~ EMHELP for a pop-up with commands.
    ~ Will help with various portions of the Gaudiguch Epic Quest as detailed in the pop-ups.
+ - Grimkeep
+   ~ GRIMHELP for a pop-up with commands.
+   ~ Will assist in killing denizens of Grimkeep
  - Hallifax Primary Generator
    ~ GENHELP for a pop-up with commands.
    ~ Will assist in producing appropriate sphere colours for the Primary Generator.
