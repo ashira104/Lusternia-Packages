@@ -1,4 +1,4 @@
-Below is a list of packages, what they do, and if they have an aliases help pop-up. Those notated with * use the Stopinator, so be aware if you download more than one package including it that you will need to remove the additional instances of the Stopinator.
+Below is a list of Mudlet packages, what they do, and if they have an aliases help pop-up. Those notated with * use the Stopinator, so be aware if you download more than one package including it that you will need to remove the additional instances of the Stopinator.
 
  - Astral Node Echoes
    - NODE ON/OFF for activation/deactivation.
@@ -55,5 +55,10 @@ Below is a list of packages, what they do, and if they have an aliases help pop-
  - Vortex Feeder
    - VORTEX HELP for a pop-up with commands.
    - Will assist with feeding fleshpots on Vortex.
+
+Below is a list of Nexus packages. These packages are very much a work in progress, and not as fancy as the Mudlet counterparts above.
+ - Gaudiguch Epic for Nexus
+ - Nexus Timequake Package
+ - Vortex Feeding
 
 Any questions or suggestions, I'm reachable on Discord as A-She-Ra#1046.
