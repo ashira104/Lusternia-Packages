@@ -6,7 +6,7 @@ Below is a list of Mudlet packages, what they do, and if they have an aliases he
  - Bix Echoes
    - Install only, no activation needed.
    - Will echo the exits on all orgbixes, torus, cubix, and prism
- - Continuum Polyhedron Feeder
+ - Continuum Polyhedron Feeder*
    - COHELP for a pop-up with commands.
    - Will assist with feeding crystals to the polyhedrons on Continuum.
  - Essence Change
