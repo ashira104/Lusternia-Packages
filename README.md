@@ -73,6 +73,12 @@ For experienced Mudlet users, or those looking for one off items to go with thei
 	 - Close Mudlet.
      - Locate the following path: C:\Users\<username>\.config\mudlet\profiles\<lusternia profile name>
 	 - Locate the Database_ndb file and delete it.
+ - Target Tracking
+  - Target Tracking (Ashira)
+   - Set a target caller and auto update your target during combat.
+   - CALLER <name> to set who is calling targerts.
+   - AIM <name> to manually set a target.
+   - can use Bashing.target in keybindings/aliases to match this.
  - Timequakes
    - TQHELP for a pop-up with commands.
    - Will call out start of a timequake (if you are on Prime), appearance/release of anomalies, attempt to release the anomaly, if you are releasing, where you are releasing, if someone else is releasing. Other commands listed in TQHELP.
@@ -83,10 +89,9 @@ For experienced Mudlet users, or those looking for one off items to go with thei
    - VHELP for a pop-up with commands.
    - Will assist with influencing during village revolts. Works for all cities/communes.
  - Vital Gauges with Gold & XP - Ashira Updates 9.10.21 (Original code by Demonnic)
- - Vital Gauges with Gold - Ashira Updates 9.10.21 (Demonnic with updates by Ashira)
    - Bars for health, mana, ego, and power along with how much gold and essence/XP you have
    - Essence/XP is based on Demi or Non-Demi.
- - Wound Window   
+ - Wound Window
    - Adjustable container to display what you see in WOUNDS.
 
 Below is a list of Nexus packages. These packages are very much a work in progress, and not as fancy as the Mudlet counterparts above.
