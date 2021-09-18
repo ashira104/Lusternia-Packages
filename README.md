@@ -2,16 +2,20 @@ Below is a list of Mudlet packages, what they do, and if they have an aliases he
 
 If you are new to Mudlet, I recommend the Mudlet Start Package as your first step. Below is a list of packages included. There is a README in the zip file with what each package does, how to operate it, and credit to the creator.
 
+   - Aetherflare Politics
    - Astral Node Echoes
    - Balance_Timers
    - Bix Echoes
    - Bubble Transport Pop-Up
    - Defense_System
+   - Domoth Status Enhancements
    - DOR
    - Essence Change
    - Grimkeep
+   - Herbert_v2 (Plant Harvester)
    - Lusternia Calendar - Ashira Updates 9.10.21
    - Lusternia ChatTabs
+   - Lusternia InfoHere Window
    - Lusternia MapWindow
    - Manifestation Following
    - Numpad Keybidnings
