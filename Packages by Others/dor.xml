@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage />
+	<TimerPackage />
+	<AliasPackage>
+		<AliasGroup isActive="yes" isFolder="yes">
+			<name>kdo</name>
+			<script></script>
+			<command></command>
+			<packageName></packageName>
+			<regex></regex>
+			<Alias isActive="yes" isFolder="no">
+				<name>Do-Repeat forever</name>
+				<script>kdo.dor(matches[2], true)
+</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^dor(?: (.+))?$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Do</name>
+				<script>kdo.doadd(matches[2], true)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^do (.+)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Do #</name>
+				<script>kdo.echo(string.format("Added %s to the do queue %s times", matches[3], matches[2]))
+for i = 1, tonumber(matches[2]) do
+  kdo.doadd(matches[3], false)
+end</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^do(\d+) (.+)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Do first</name>
+				<script>kdo.dofirst(matches[2], true)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^dofirst (.+)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Do free</name>
+				<script>kdo.doaddfree(matches[2], true)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^dofree (.+)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Do first free</name>
+				<script>kdo.dofreefirst(matches[2], true)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^(?:dofreefirst|dff) (.+)$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Undo</name>
+				<script>kdo.undo(matches[2], true)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^undo(?: (\w+))?$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Undo all</name>
+				<script>kdo.undoall(true)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^undoall$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Undofree</name>
+				<script>kdo.undofree(true)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^undofree$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Undo all free</name>
+				<script>kdo.undoallfree(true)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^undoallfree$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>Show do</name>
+				<script>kdo.doshow()</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^show do$</regex>
+			</Alias>
+			<Alias isActive="yes" isFolder="no">
+				<name>pause do</name>
+				<script>kdo.pause(matches[2]~="un",true)</script>
+				<command></command>
+				<packageName></packageName>
+				<regex>^(un)?pause do$</regex>
+			</Alias>
+		</AliasGroup>
+	</AliasPackage>
+	<ActionPackage />
+	<ScriptPackage>
+		<ScriptGroup isActive="yes" isFolder="yes">
+			<name>kdo</name>
+			<packageName></packageName>
+			<script></script>
+			<eventHandlerList />
+			<Script isActive="yes" isFolder="no">
+				<name>Aliases/functions to manipulate the queue</name>
+				<packageName></packageName>
+				<script>kdo = kdo or {}
+kdo.doQueue = kdo.doQueue or {}
+kdo.doFreeQueue = kdo.doFreeQueue or {}
+kdo.repeating = kdo.repeating or false
+
+local function checkEmpty(echoback)
+  if #kdo.doQueue == 0 and kdo.repeating then
+    kdo.repeating = false
+    if echoback then
+      kdo.echo("The Do Queue is empty - Do Repeat &lt;red&gt;Disabled")
+    end
+  end
+end
+
+function kdo.dor(command, echoback)
+  --stuff to turn it off if you do DOR when it's enabled, or dor off.
+  if not command or command == "off" then
+    if kdo.repeating or command == "off" then
+      kdo.repeating = false
+      kdo.doQueue = {}
+      if echoback then
+        kdo.echo("Do-Repeat &lt;red&gt;disabled")
+      end
+    else
+      if #kdo.doQueue &gt; 0 then
+        command = kdo.doQueue[1]
+        kdo.echof(
+          "Do-Repeat &lt;green&gt;enabled&lt;PowderBlue&gt;; will repeat &lt;DodgerBlue&gt;%s&lt;PowderBlue&gt; forever.",
+          command
+        )
+        kdo.repeating = true
+      else
+        kdo.echo("Sorry, there's nothing in the queue to repeat.")
+      end
+    end
+  else
+    --if that's not the case, turn dor on and add the command to the queue.
+    kdo.repeating = true
+    kdo.doQueue[1] = command
+    if echoback then
+      kdo.echof(
+        "Do-Repeat &lt;green&gt;enabled&lt;PowderBlue&gt;; will repeat &lt;DodgerBlue&gt;%s&lt;PowderBlue&gt; forever.",
+        command
+      )
+    end
+  end
+  raiseEvent("do changed")
+end
+
+function kdo.doadd(command, echoback)
+  kdo.doQueue[#kdo.doQueue + 1] = command
+  if echoback then
+    kdo.echof("Added \"%s\" to the do queue.", command)
+  end
+  raiseEvent("do changed")
+end
+
+function kdo.dofirst(command, echoback)
+  table.insert(kdo.doQueue, 1, command)
+  if echoback then
+    kdo.echof("Will do \"%s\" first.", command)
+  end
+  raiseEvent("do changed")
+end
+
+function kdo.doaddfree(command, echoback)
+  table.insert(kdo.doFreeQueue, command)
+  if echoback then
+    kdo.echof("Added \"%s\" to the dofree queue.", command)
+  end
+  raiseEvent("dofree changed")
+end
+
+function kdo.dofreefirst(command, echoback)
+  table.insert(kdo.doFreeQueue, 1, command)
+  if echoback then
+    kdo.echof("Will do \"%s\" first in dofree.", command)
+  end
+  raiseEvent("dofree changed")
+end
+
+--functions for removing stuff from the queue
+
+function kdo.undo(command, echoback)
+  if command == "all" then
+    return
+  end
+  if #kdo.doQueue == 0 then
+    if echoback then
+      kdo.echo("The do queue is empty.")
+    end
+    return
+  end
+  if command then
+    for i, entry in ipairs(kdo.doQueue) do
+      if entry == command then
+        table.remove(kdo.doQueue, i)
+        if echoback then
+          kdo.echof("Removed \"%s\" from the do queue.", command)
+        end
+        checkEmpty(echoback)
+        return
+      end
+    end
+    if echoback then
+      kdo.echof("Don't have \"%s\" in the do queue.", command)
+    end
+  else
+    local command = table.remove(kdo.doQueue, 1)
+    if echoback then
+      kdo.echof("Removed \"%s\" from the do queue.", command)
+    end
+    checkEmpty(echoback)
+  end
+  raiseEvent("do changed")
+end
+
+function kdo.undoall(echoback)
+  kdo.repeating = false
+  kdo.doQueue = {}
+  if echoback then
+    kdo.echo("Do queue completely cleared.")
+  end
+  checkEmpty(echoback)
+  raiseEvent("do changed")
+end
+
+function kdo.undofree(what, echoback)
+  local command = table.remove(kdo.doQueue, 1)
+  if echoback then
+  end
+  raiseEvent("dofree changed")
+end
+
+function kdo.undoallfree(echoback)
+  kdo.doFreeQueue = {}
+  if echoback then
+    kdo.echo("DoFree queue completely cleared.")
+  end
+  raiseEvent("dofree changed")
+end
+
+--display the do queue
+
+function kdo.pause(bool, echoback)
+  if bool then
+    if echoback then
+      kdo.echo("Paused the do queue")
+    end
+    kdo.paused = true
+  else
+    if echoback then
+      kdo.echo("Resumed the do queue")
+    end
+    kdo.paused = false
+    kdo.doStuff()
+  end
+end
+
+function kdo.doshow()
+  kdo.echo(
+    "We are currently " ..
+    (kdo.repeating and "&lt;DodgerBlue&gt;repeating" or "&lt;red&gt;NOT repeating") ..
+    " &lt;PowderBlue&gt;actions"
+  )
+  kdo.echo("Actions left in the Do queue:&lt;DodgerBlue&gt; " .. table.concat(kdo.doQueue, ", "))
+  kdo.echo("Actions left in the Do Free queue:&lt;DodgerBlue&gt; " .. table.concat(kdo.doFreeQueue, ", "))
+end
+
+--if mmf isn't installed, this should fill the mm namespace with kdo's stuff so anything which relied on mmf's DO api should just be plug and play. No guarantees, though!
+registerAnonymousEventHandler(
+  "sysLoadEvent",
+  function()
+    if not mm then
+      mm = kdo
+    end
+  end,
+  true
+)</script>
+				<eventHandlerList />
+			</Script>
+			<Script isActive="yes" isFolder="no">
+				<name>balance handling</name>
+				<packageName></packageName>
+				<script>kdo = kdo or {}
+kdo.bal = kdo.bal or {}
+--some pared down code yoinked from my hodgepodge system
+kdo.bal.bals =
+  kdo.bal.bals or
+  {
+    balance = true,
+    equilibrium = true,
+    psiid = true,
+    psisuper = true,
+    psisub = true,
+    left_arm = true,
+    right_arm = true,
+    left_leg = true,
+    right_leg = true,
+    head = true,
+  }
+--kdo.bal.oldbals = kdo.bal.oldbals or kdo.bal.bals
+--goes through and writes the new values from gmcp.Char.Vitals to the kdo.bal.bals table
+
+local function allTrue(tab)
+  for k, v in pairs(tab) do
+    if not v then
+      return false
+    end
+  end
+  return true
+end
+
+local customCheck =
+  customCheck or
+  function()
+    return true
+  end
+
+function kdo.setCustomCheck(func, echoback)
+  customCheck = func
+  if echoback then
+    kdo.echo("Added a custom function to the balance check.")
+  end
+end
+
+function kdo.bal.canAct()
+  if allTrue(kdo.bal.bals) and gmcp.Char.Vitals.prone == "0" and customCheck() then
+    return true
+  else
+    return false
+  end
+end
+
+function kdo.bal.updateBals()
+  local oldbals = table.deepcopy(kdo.bal.bals)
+  for bal, value in pairs(kdo.bal.bals) do
+    if gmcp.Char.Vitals[bal] then
+      kdo.bal.bals[bal] = gmcp.Char.Vitals[bal] ~= "0"
+    end
+  end
+  local regainedBalances = false
+  for bal, val in pairs(kdo.bal.bals) do
+    if oldbals[bal] and not val then
+      kdo.decho("balance debug: " .. bal .. " lost!")
+    elseif val and not oldbals[bal] then
+      kdo.decho("balance debug: " .. bal .. " gained!")
+      regainedBalances = true
+    end
+  end
+  if regainedBalances and allTrue(kdo.bal.bals) then
+    raiseEvent("kdo regained balance")
+  end
+end
+
+local vitalsHandler = vitalsHandler
+if vitalsHandler then
+  killAnonymousEventHandler(vitalsHandler)
+end
+vitalsHandler = registerAnonymousEventHandler("gmcp.Char.Vitals", "kdo.bal.updateBals")</script>
+				<eventHandlerList />
+			</Script>
+			<Script isActive="yes" isFolder="no">
+				<name>Echo functions</name>
+				<packageName></packageName>
+				<script>kdo = kdo or {}
+function kdo.echo(text)
+  cecho(
+    "\n&lt;RoyalBlue&gt;[&lt;MediumSlateBlue&gt;Hodge&lt;MediumSeaGreen&gt;Podge&lt;RoyalBlue&gt;]&lt;MediumSlateBlue&gt;: &lt;PowderBlue&gt;" ..
+    text
+  )
+end
+
+function kdo.echof(text, thing)
+  kdo.echo(string.format(text, thing))
+end
+
+function kdo.decho(text)
+  if kdo.debug == true then
+    kdo.echo(text)
+  end
+end</script>
+				<eventHandlerList />
+			</Script>
+			<Script isActive="yes" isFolder="no">
+				<name>Choo choo</name>
+				<packageName></packageName>
+				<script>kdo = kdo or {}
+local REPEAT_TIMER = 1
+local timer = timer or 0
+local throttled = false
+
+local function throttle()
+  if throttled then
+    return false
+  end
+  killTimer(timer)
+  throttled = true
+  timer =
+    tempTimer(
+      REPEAT_TIMER,
+      function()
+        throttled = false
+        kdo.doStuff()
+      end
+    )
+  return true
+end
+
+function kdo.send(command)
+  tempTimer(
+    0,
+    function()
+      kdo.echo("Doing &lt;DodgerBlue&gt;" .. command)
+      expandAlias(command, false)
+    end
+  )
+end
+
+function kdo.doStuff()
+  if throttled or kdo.paused or not kdo.bal.canAct() then
+    return
+  end
+  if #kdo.doFreeQueue &gt; 0 then
+    for i, command in pairs(kdo.doFreeQueue) do
+      kdo.send(command)
+    end
+    kdo.doFreeQueue = {}
+  end
+  if #kdo.doQueue &gt; 0 then
+    kdo.send(kdo.doQueue[1])
+    throttle()
+    if not kdo.repeating then
+      table.remove(kdo.doQueue, 1)
+    end
+  end
+end
+
+local afflictionTimer = 0
+
+local function afflictionDelay()
+  if afflictionTimer then
+    killTimer(afflictionTimer)
+  end
+  afflictionTimer = tempTimer(0, kdo.doStuff)
+end
+
+local handlers = {}
+local handledEvents = {"kdo regained balance", "do changed", "dofree changed"}
+for i, handler in pairs(handlers) do
+  killAnonymousEventHandler(handler)
+end
+for i, event in pairs(handledEvents) do
+  table.insert(handlers, registerAnonymousEventHandler(event, "kdo.doStuff"))
+end
+table.insert(
+  handlers, registerAnonymousEventHandler("gmcp.Char.Afflictions.Remove", afflictionDelay)
+)</script>
+				<eventHandlerList />
+			</Script>
+		</ScriptGroup>
+	</ScriptPackage>
+	<KeyPackage />
+	<VariablePackage>
+		<HiddenVariables />
+	</VariablePackage>
+</MudletPackage>
