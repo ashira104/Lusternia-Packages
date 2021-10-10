@@ -25,6 +25,9 @@ These packages are from various sources, released with the permission of the cod
    - Adds the enemy/ally colour, expiration times, and ending echo of how many per org like MMF has.
  - dor (Kali)
    - A do repeat system with many aliases. Easier to check it out once loaded.
+ - Experience Change (Ianir)
+    - Install only, no activation needed.
+    - Will show experience gain/loss (both non-Demi and Demi).
  - Herbert_v2.1 (Kali)
    - Herb harvesting script. Will only pick in one room. Does not auto-walk the area.
    - HERBERT MENU for a clickable menu of what herbs to harvest. You can select more than one if desired.
@@ -43,3 +46,5 @@ These packages are from various sources, released with the permission of the cod
  - Vital Gauges with Gold & XP - Ashira Updates 9.10.21 (Demonnic with updates by Ashira)
    - Bars for health, mana, ego, and power along with how much gold and essence/XP you have
    - Essence/XP is based on Demi or Non-Demi.
+
+Any questions or suggestions, I'm reachable on Discord as A-She-Ra#1046.
