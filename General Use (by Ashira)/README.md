@@ -59,6 +59,7 @@ Below is a list of Mudlet packages, what they do, and if they have an aliases he
    - Bar Gauges for health, mana, ego, and power along with how much gold and essence/XP you have
    - Essence/XP is based on Demi or Non-Demi. 
    - Customizable in Single, Double, or Triple column(s) with VIT [SINGLE|DOUBLE|TRIPLE]
+   - Customizable font size with VIT FONTSIZE <number>
  - Wound Tracker - Me
    - Adjustable container to display what you see in WOUNDS.
    - WOUND SHOW/HIDE to have the container appear/disappear as needed.

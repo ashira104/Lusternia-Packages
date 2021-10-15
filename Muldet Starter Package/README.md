@@ -98,6 +98,7 @@ Enclosed are several modules that you can add or remove as you like, as they are
    - Bar Gauges for health, mana, ego, and power along with how much gold and essence/XP you have
    - Essence/XP is based on Demi or Non-Demi. 
    - Customizable in Single, Double, or Triple column(s) with VIT [SINGLE|DOUBLE|TRIPLE]
+   - Customizable font size with VIT FONTSIZE <number>
  - Vital Gauges with Gold & XP - Ashira Updates 9.10.21 (Demonnic with updates by Ashira)
    - Text Gauges for health, mana, ego, and power along with how much gold and essence/XP you have
    - Essence/XP is based on Demi or Non-Demi.
