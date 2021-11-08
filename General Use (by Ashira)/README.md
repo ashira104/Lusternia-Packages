@@ -60,6 +60,13 @@ Below is a list of Mudlet packages, what they do, and if they have an aliases he
    - Essence/XP is based on Demi or Non-Demi. 
    - Customizable in Single, Double, or Triple column(s) with VIT [SINGLE|DOUBLE|TRIPLE]
    - Customizable font size with VIT FONTSIZE <number>
+ - Wayfaire Quests
+   - Assist with completion of Wayfaire quests.
+   - WAYFAIRE HELP for a pop-up with commands.
+   - Must turn on the main package AND the sub package you are working on at that moment.
+ - Who & Ewho Location Echoes
+   - Echo the room number and name for WHO and EWHO
+   - Must have the mudlet mapper installed, as it uses scripts from there.
  - Wound Tracker - Me
    - Adjustable container to display what you see in WOUNDS.
    - WOUND SHOW/HIDE to have the container appear/disappear as needed.
