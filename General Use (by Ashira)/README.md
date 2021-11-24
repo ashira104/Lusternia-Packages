@@ -71,7 +71,7 @@ Below is a list of Mudlet packages, what they do, and if they have an aliases he
    - Adjustable container to display what you see in WOUNDS.
    - WOUND SHOW/HIDE to have the container appear/disappear as needed.
  - Wound Tracker - Opponent
-   - Adjustable container to display what you see with DISCERN <player> WOUNDS FREE.
+   - Adjustable container to display what you see with DISCERN <player> WOUNDS FREE and DISCERN <player> FREE.
    - OPWOUND SHOW/HIDE to have the container appear/disappear as needed.
 
 Any questions or suggestions, I'm reachable on Discord as A-She-Ra#1046.

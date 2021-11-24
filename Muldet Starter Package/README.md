@@ -106,7 +106,7 @@ Enclosed are several modules that you can add or remove as you like, as they are
    - Adjustable container to display what you see in WOUNDS.
    - WOUND SHOW/HIDE to have the container appear/disappear as needed.
  - Wound Tracker - Opponent (Ashira)
-   - Adjustable container to display what you see with DISCERN <player> WOUNDS FREE.
+   - Adjustable container to display what you see with DISCERN <player> WOUNDS FREE and DISCERN <player> FREE.
    - OPWOUND SHOW/HIDE to have the container appear/disappear as needed.
    
 Any questions or suggestions, I'm reachable on Discord as A-She-Ra#1046.
