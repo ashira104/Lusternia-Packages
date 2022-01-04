@@ -32,6 +32,7 @@ These packages are from various sources, released with the permission of the cod
    - Herb harvesting script. Will only pick in one room. Does not auto-walk the area.
    - HERBERT MENU for a clickable menu of what herbs to harvest. You can select more than one if desired.
    - HERBERT PICK/STOP to stop and start the herb harvesting!
+   - HERBERT RUN <environment> to have Herbert walk you through all the rooms in the area that match that environment. Can be two words.
  - Lusternia Calendar - Ashira Updates 9.10.21 (Demonnic with updates by Ashira)
    - Adjustable container for an in game calendar that displays the month, date, year, and moon phase
  - LuserniaChatTabs (Demonnic)
