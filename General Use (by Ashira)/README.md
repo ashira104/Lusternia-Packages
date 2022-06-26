@@ -1,5 +1,8 @@
-Below is a list of Mudlet packages, what they do, and if they have an aliases help pop-up. Those notated with * use the Stopinator, so be aware if you download more than one package including it that you will need to remove the additional instances of the Stopinator.
+Below is a list of Mudlet packages, what they do, and if they have an aliases help pop-up. Those notated with * use the Stopinator, so please be sure to download it from the Packages by Others section.
 
+ - Alchemy
+   - ALHLEP for a pop-up with commands.
+   - Will assist with base Alchemy, Lorecraft, and Brewmeister
  - Astral Node Echoes
    - NODE ON/OFF for activation/deactivation.
    - Will produce echoes letting you know linking status of astral nodes.
@@ -11,10 +14,6 @@ Below is a list of Mudlet packages, what they do, and if they have an aliases he
  - Grimkeep
    - GRIMHELP for a pop-up with commands.
    - Will assist in killing denizens of Grimkeep
- - Manifestation Following
-   - MANI ON/OFF for activation/deactivation.
-   - Will follow manifestations when activated.
-   - Will pick up sands that manifestations drop.
  - Numpad Keybidnings
    - Install only, no activation needed.
    - General directional keys on the numpad with zero as the SCENT command.
@@ -49,9 +48,6 @@ Below is a list of Mudlet packages, what they do, and if they have an aliases he
  - Timequakes
    - TQHELP for a pop-up with commands.
    - Will call out start of a timequake (if you are on Prime), appearance/release of anomalies, attempt to release the anomaly, if you are releasing, where you are releasing, if someone else is releasing. Other commands listed in TQHELP.
- - Tome of Rememberance
-   - TOME HELP for a pop-up with commands.
-   - Will help with various portions of the Tome of Rememberance Quest.
  - Village Influencer
    - VHELP for a pop-up with commands.
    - Will assist with influencing during village revolts. Works for all cities/communes.
@@ -60,10 +56,6 @@ Below is a list of Mudlet packages, what they do, and if they have an aliases he
    - Essence/XP is based on Demi or Non-Demi. 
    - Customizable in Single, Double, or Triple column(s) with VIT [SINGLE|DOUBLE|TRIPLE]
    - Customizable font size with VIT FONTSIZE <number>
- - Wayfaire Quests
-   - Assist with completion of Wayfaire quests.
-   - WAYFAIRE HELP for a pop-up with commands.
-   - Must turn on the main package AND the sub package you are working on at that moment.
  - Who & Ewho Location Echoes
    - Echo the room number and name for WHO and EWHO
    - Must have the mudlet mapper installed, as it uses scripts from there.
