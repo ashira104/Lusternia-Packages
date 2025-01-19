@@ -6,4 +6,4 @@ For the more experienced user, the General Use (by Ashira) and Packages by Other
 
 Each folder has its own README file with what the packages do.
 
-Any questions or suggestions, I'm reachable on Discord as A-She-Ra#1046.
+Any questions or suggestions, I'm reachable on Discord as a-she-ra.
